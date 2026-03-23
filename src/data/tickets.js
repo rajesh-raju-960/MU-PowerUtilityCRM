@@ -6,6 +6,7 @@ const tickets = [
     longText:
       "There has been a power outage since 6 AM affecting multiple houses in sector 12. This is causing issues for daily activities and work-from-home setups.",
     user: "John Doe",
+    userID: 1,
     messages: [
       { sender: "user", text: "There is no electricity since morning" },
       { sender: "agent", text: "We are checking the issue" }
@@ -18,6 +19,7 @@ const tickets = [
     longText:
       "The latest electricity bill is unusually high compared to previous months despite similar usage. Need clarification.",
     user: "Alice",
+    userID: 2,
     messages: [
       { sender: "user", text: "My bill seems too high" }
     ]
@@ -29,6 +31,7 @@ const tickets = [
     longText:
       "The solar panel system stopped generating power suddenly. No error shown but output is zero.",
     user: "Harry",
+    userID: 3,
     messages: [
       { sender: "user", text: "Solar not working" }
     ]

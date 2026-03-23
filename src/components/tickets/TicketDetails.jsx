@@ -28,6 +28,7 @@ const TicketDetails = ({ ticket }) => {
             <div>
             <h3 className="font-semibold">{ticket.user}</h3>
             <p className="text-sm text-gray-400">{ticket.id}</p>
+            <p className="text-sm text-gray-400">Account number : {ticket.userID}</p>
             </div>
         </div>
         <button
@@ -58,6 +59,12 @@ const TicketDetails = ({ ticket }) => {
                 <p className="text-gray-400 text-sm">User</p>
                 <p>{ticket.user}</p>
             </div>
+
+            <div>
+                <p className="text-gray-400 text-sm">Account number</p>
+                <p>{ticket.userID}</p>
+            </div>
+
 
             <div>
                 <p className="text-gray-400 text-sm">Ticket ID</p>
