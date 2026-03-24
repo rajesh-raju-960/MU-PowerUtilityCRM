@@ -34,7 +34,7 @@ const AdminLayout = () => {
                     : "text-gray-400"
                 }
                 >
-                Onboarded Customers
+                Leads
                 </NavLink>
 
                 <NavLink

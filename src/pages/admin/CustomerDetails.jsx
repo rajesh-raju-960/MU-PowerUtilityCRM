@@ -1,10 +1,20 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import customersData from "../../data/customers";
 
+
 const CustomerDetails = () => {
-  const { id } = useParams();
-  const customer = customersData.find((c) => c.id === id);
+  // const { id } = useParams();
+  // const customer = customersData.find((c) => c.id === id);
   const navigate = useNavigate();
+
+
+  const { state } = useLocation();  
+  const customer = state?.customer;
+
+  if (!customer) {
+    return <div>Error: Customer data not available</div>; // in case there's no customer data
+  }
+
 
   return (
     <div>
@@ -28,15 +38,15 @@ const CustomerDetails = () => {
         <Field label="First Name" value={customer.firstName} />
         <Field label="Last Name" value={customer.lastName} />
         <Field label="Email" value={customer.email} />
-        <Field label="Phone" value={customer.phone} />
-        <Field label="Address" value={customer.address} />
-        <Field label="City" value={customer.city} />
-        <Field label="County" value={customer.county} />
-        <Field label="Eircode" value={customer.eircode} />
-        <Field label="Provider" value={customer.provider} />
-        <Field label="MPRN" value={customer.mprn} />
-        <Field label="Meter Number" value={customer.meterNumber} />
-        <Field label="Reading" value={customer.reading} />
+        <Field label="Phone" value={customer.phone || "Unavailable"} />
+        <Field label="Address" value={customer.address || "Unavailable"} />
+        <Field label="City" value={customer.city || "Unavailable"} />
+        <Field label="County" value={customer.county || "Unavailable"} />
+        <Field label="Eircode" value={customer.eircode || "Unavailable"} />
+        <Field label="Provider" value={customer.provider || "Unavailable"} />
+        <Field label="MPRN" value={customer.mprn || "Unavailable"} />
+        <Field label="Meter Number" value={customer.meterNumber || "Unavailable"} />
+        <Field label="Reading" value={customer.reading || "Unavailable"} />
 
       </div>
     </div>

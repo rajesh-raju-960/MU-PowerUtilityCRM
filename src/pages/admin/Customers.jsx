@@ -1,20 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import customersData from "../../data/customers";
+import { getCustomers } from "../../api/customers";
+import { ClipLoader } from "react-spinners";  // Import spinner
 
 const Customers = () => {
   const [search, setSearch] = useState("");
+  const [customers, setCustomers] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); 
   const navigate = useNavigate();
 
-  const filtered = customersData.filter((c) =>
-    c.firstName.toLowerCase().includes(search.toLowerCase())
+  // Fetch customers data on component mount
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      const data = await getCustomers();
+      setCustomers(data.data);
+      setIsLoading(false);
+    };
+    fetchData();
+  }, []);
+
+  const filtered = customers?.filter((c) =>
+    c.firstName?.toLowerCase().includes(search?.toLowerCase())
   );
 
   return (
     <div>
         <div className="flex justify-between items-center mb-4">
             <h2 className="text-2xl font-semibold mb-4">
-                Onboarded Customers
+                Leads
             </h2>
 
 
@@ -41,24 +56,31 @@ const Customers = () => {
           </thead>
           
             <tbody>
-                {filtered.map((c) => (
+              {isLoading ? (
+              <tr>
+                <td colSpan="4" className="p-4 text-center">
+                  <ClipLoader size={50} color="#6366F1" loading={isLoading} />
+                </td>
+              </tr>
+              ) : (
+                filtered.map((c) => (
                 <tr key={c.id} className="border-t border-gray-800 hover:bg-[#1a2235] transition">
                     <td className="p-3">{c.firstName} {c.lastName}</td>
-                    <td className="p-3">{c.email}</td>
-                    <td className="p-3">{c.phone}</td>
+                    <td className="p-3">{c.email || ''}</td>
+                    <td className="p-3">{c.phone || ''}</td>
 
                     <td className="p-3">
                     <button
-                        onClick={() => navigate(`/admin/customers/${c.id}`)}
+                        onClick={() => navigate(`/admin/customers/${c.id}`, { state: { customer: c } })}
                         className="bg-indigo-600 px-3 py-1 rounded hover:bg-indigo-500"
                     >
                         View Details
                     </button>
                     </td>
                 </tr>
-                ))}
+                ))
+              )}
             </tbody>
-
         </table>
       </div>
     </div>
