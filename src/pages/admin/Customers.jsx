@@ -71,7 +71,7 @@ const Customers = () => {
 
                     <td className="p-3">
                     <button
-                        onClick={() => navigate(`/admin/customers/${c.id}`, { state: { customer: c } })}
+                        onClick={() => navigate(`/admin/leads/${c.id}`, { state: { customer: c } })}
                         className="bg-indigo-600 px-3 py-1 rounded hover:bg-indigo-500"
                     >
                         View Details
