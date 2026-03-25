@@ -14,9 +14,10 @@ function App() {
 
         {/* Admin layout */}
         <Route path="/admin" element={<AdminLayout />}>
-          <Route path="customers" element={<Customers />} />
-            <Route path="customers/:id" element={<CustomerDetails />} />
+          <Route path="leads" element={<Customers />} />
+            <Route path="leads/:id" element={<CustomerDetails />} />
           <Route path="tickets" element={<Tickets />} />
+          <Route path="customers" element={<div>Coming soon!</div>} />
         </Route>
       </Routes>
     </BrowserRouter>

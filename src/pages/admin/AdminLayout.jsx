@@ -22,12 +22,12 @@ const AdminLayout = () => {
 
         {/* Top Navbar */}
         <div className="flex justify-between items-center px-10 py-4 border-b border-gray-800">
-            <h1 className="text-xl font-bold">PowerCRM</h1>
+            <h1 className="text-xl font-bold">WattWatch CRM</h1>
 
             {/* Tabs */}
             <div className="flex gap-6 px-10 py-4">
                 <NavLink
-                to="/admin/customers"
+                to="/admin/leads"
                 className={({ isActive }) =>
                     isActive
                     ? "text-indigo-400 border-b-2 border-indigo-400 pb-2"
@@ -46,6 +46,16 @@ const AdminLayout = () => {
                 }
                 >
                 Tickets
+                </NavLink>
+                <NavLink
+                to="/admin/customers"
+                className={({ isActive }) =>
+                    isActive
+                    ? "text-indigo-400 border-b-2 border-indigo-400 pb-2"
+                    : "text-gray-400"
+                }
+                >
+                Customers
                 </NavLink>
             </div>
     {/* 

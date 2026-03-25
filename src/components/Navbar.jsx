@@ -1,7 +1,7 @@
 const Navbar = () => {
   return (
     <nav className="flex justify-between items-center px-10 py-5 bg-[#0b0f19]">
-      <h1 className="text-xl font-bold">PowerCRM</h1>
+      <h1 className="text-xl font-bold">WattWatch CRM</h1>
 
       <div className="flex gap-6 text-sm text-gray-300">
         <span>Products</span>

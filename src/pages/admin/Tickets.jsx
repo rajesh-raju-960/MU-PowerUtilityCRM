@@ -6,7 +6,7 @@ import ticketsData from "../../data/tickets";
 
 const Tickets = () => {
   const [selectedTicket, setSelectedTicket] = useState(ticketsData[0]);
-
+  
   return (
     <div className="flex gap-6 h-[75vh]">
 

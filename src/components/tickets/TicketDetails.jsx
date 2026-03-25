@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MessageBubble from "./MessageBubble";
 import ChatInput from "./ChatInput";
 import Modal from "../common/Modal";
@@ -6,6 +6,10 @@ import Modal from "../common/Modal";
 const TicketDetails = ({ ticket }) => {
   const [messages, setMessages] = useState(ticket.messages);
   const [showModal, setShowModal] = useState(false)
+
+  useEffect(()=>{
+    setMessages(ticket.messages)
+  },[ ticket ])
 
   const sendMessage = (text) => {
     setMessages([...messages, { sender: "agent", text }]);
@@ -31,12 +35,18 @@ const TicketDetails = ({ ticket }) => {
             <p className="text-sm text-gray-400">Account number : {ticket.userID}</p>
             </div>
         </div>
-        <button
-            onClick={() => setShowModal(true)}
-            className="bg-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-500"
-        >
-            Details
-        </button>
+        <div className="flex items-center gap-4 ">
+          <button
+              onClick={() => setShowModal(true)}
+              className="bg-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-500">
+              Details
+          </button>
+          <button
+              onClick={() => alert(ticket.id + " "+ "ticket will be closed")}
+              className="bg-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-500">
+              Close ticket
+          </button>
+        </div>
     </div>
 
 
